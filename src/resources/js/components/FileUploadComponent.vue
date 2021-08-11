@@ -3,17 +3,21 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-
                     <div class="card-body">
 
-                        <div v-if="success != ''" class="alert alert-success">
+                        <div v-if="success" class="alert alert-success">
                             {{success}}
+                        </div>
+
+                        <div v-if="error" class="alert alert-danger">
+                            {{error}}
                         </div>
 
                         <form @submit="formSubmit" enctype="multipart/form-data">
                             <input type="file" class="form-control" v-on:change="onChange">
                             <button class="btn btn-primary btn-block">Upload</button>
                         </form>
+
                     </div>
                 </div>
             </div>
@@ -48,11 +52,12 @@
                 axios.post('/upload', data, config)
                     .then(response => {
                         this.success = response.data.success;
+                        this.error = false;
                         this.$root.$refs.FilesShowComponent.fetchFile();
                     })
                     .catch(error => {
                         this.success = false
-                        this.output = err;
+                        this.error = error;
                     });
             }
         }

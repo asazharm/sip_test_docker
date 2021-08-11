@@ -25,7 +25,7 @@ class FileController extends Controller
 
 
         $request->validate([
-            'file' => 'required|mimes:jpg,jpeg,png,csv,txt,xlx,xls,pdf|max:2048'
+            'file' => 'required|mimes:jpg,jpeg,png,csv,txt,xlx,xls,pdf|max:4096'
         ]);
 
         $model = new File;
