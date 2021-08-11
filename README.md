@@ -1,5 +1,6 @@
 # sip_test_docker
-cd sip_test_docker  
+
+~~~cd sip_test_docker  
 docker-compose build
 docker-compose up
 
@@ -13,5 +14,6 @@ php artisan key:generate
 docker-compose exec -T app php artisan migrate:install
 docker-compose exec -T app php artisan migrate
 docker-compose exec -T app php artisan storage:link
+~~~
 
 ready!
